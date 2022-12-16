@@ -6,7 +6,6 @@ const appDir = process.cwd();
 const ssh = new NodeSSH();
 
 const outputPath = path.resolve(appDir, "build");
-console.log("outPath", outputPath);
 
 const connectServer = async () => {
   await ssh.connect({
@@ -20,25 +19,25 @@ const connectServer = async () => {
 
 const uploadFiles = async (localPath, serverDir) => {
   const status = await ssh.putDirectory(localPath, serverDir, {
-    recursive: true, // 递归.
+    recursive: true,
     concurrency: 10, // 进程数
   });
   console.log("传送到服务器:", status ? "成功" : "失败");
 };
 
-// 1. 获取输出的文件夹
+
 const deploy = async () => {
   // 1. 连接我们的服务器(ssh连接)
   await connectServer();
-  const serverDir = options.removePath;
 
-  // 3. 删除原来目录中的内容
+  // 2. 删除原来目录中的内容
+  const serverDir = options.removePath;
   await ssh.execCommand(`rm -rf ${serverDir}/*`);
 
-  // 4. 上传文件到服务器
+  // 3. 上传文件到服务器
   await uploadFiles(outputPath, serverDir);
 
-  // 5. 关闭ssh
+  // 4. 关闭ssh
   ssh.dispose();
 };
 

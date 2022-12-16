@@ -31,6 +31,7 @@ const commonConfig = (isProduction) => {
       alias: {
         "@": resolveApp("./src"),
         pages: resolveApp("./src/pages"),
+        config: resolveApp("./src/config")
       },
     },
     resolveLoader: {

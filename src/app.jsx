@@ -1,6 +1,11 @@
 import React from "react";
+
+import Home from "./pages/Home";
+
 const App = () => {
-  return <div>你好</div>;
+  return <div>
+    <Home />
+  </div>;
 };
 
 export default App;
