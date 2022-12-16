@@ -1,20 +1,9 @@
-import "./css/index.css"
-// import "./css/test.scss"
-// import "./css/test.less"
-// import "./css/index.css"
-// const a = "123"
-// import "./_test_/testImg"
-// console.log(abc)
-// import "./_test_/testTs.ts"
+import React from 'react'
+import { createRoot } from 'react-dom/client';
 
-// import "./_test_/react_index"
+import App from "./app";
 
-const message = "测试箭头函数"
-const foo = (info) => {
-    console.log(info)
-}
 
-foo(message);
-
-console.log("abc")
-console.log("123")
+const container = document.getElementById("app")
+const root = createRoot(container)
+root.render(<App />)
