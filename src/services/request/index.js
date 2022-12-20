@@ -1,15 +1,16 @@
 import axios from "axios";
 import { TIME_OUT, BASE_URL } from "./config";
+import { getToken } from 'utils/cookie'
 
 class Request {
-    constructor(baseURL, timeout) {
+    constructor(baseURL, timeout, JWTOKEN) {
         this.instance = axios.create({
             baseURL,
             timeout
         })
 
         // 设置cookier
-        this.instance.defaults.headers.common['Authorization'] = '123'
+        this.instance.defaults.headers.common['Authorization'] = JWTOKEN
 
         // 请求拦截
         this.instance.interceptors.request.use((config) => {
@@ -27,4 +28,4 @@ class Request {
     }
 }
 
-export default new Request(BASE_URL, TIME_OUT)
+export default new Request(BASE_URL, TIME_OUT, getToken())

@@ -24,6 +24,16 @@ const commonConfig = (isProduction) => {
     },
     devServer: {
       hot: true,
+      // proxy: {
+      //   "/Api": {
+      //     target:"http://localhost:9001",
+      //     pathRewrite:{
+      //       "^Api":""
+      //     },
+      //     secure:false,
+      //     changeOrigin:true
+      //   }
+      // },
     },
     // 解析到文件时自动添加扩展名.
     resolve: {
@@ -31,7 +41,8 @@ const commonConfig = (isProduction) => {
       alias: {
         "@": resolveApp("./src"),
         pages: resolveApp("./src/pages"),
-        config: resolveApp("./src/config")
+        config: resolveApp("./src/config"),
+        utils:resolveApp("./src/utils")
       },
     },
     resolveLoader: {
