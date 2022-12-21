@@ -14,7 +14,6 @@ const App = () => {
     if (!getToken()) {
       navigate('/login')
     }
-    
   }, [])
   return (<div>
     {useRoutes(routes)}
