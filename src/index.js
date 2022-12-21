@@ -8,7 +8,7 @@ import { HashRouter } from 'react-router-dom'
 import store from './store';
 import "normalize.css"
 
-import App from "./app";
+import App from "./app.jsx";
 
 const container = document.getElementById("app")
 const root = createRoot(container)
