@@ -1,20 +1,26 @@
-import "./css/index.css"
-// import "./css/test.scss"
-// import "./css/test.less"
-// import "./css/index.css"
-// const a = "123"
-// import "./_test_/testImg"
-// console.log(abc)
-// import "./_test_/testTs.ts"
+import React, { Suspense } from 'react'
+import { createRoot } from 'react-dom/client';
+import 'antd/dist/reset.css'
+import { ConfigProvider } from 'antd';
+import { Provider } from 'react-redux';
+import zhCN from 'antd/es/locale/zh_CN'
+import { HashRouter } from 'react-router-dom'
+import store from './store';
+import "normalize.css"
 
-// import "./_test_/react_index"
+import App from "./app";
 
-const message = "测试箭头函数"
-const foo = (info) => {
-    console.log(info)
-}
+const container = document.getElementById("app")
+const root = createRoot(container)
 
-foo(message);
-
-console.log("abc")
-console.log("123")
+root.render(
+    <Suspense fallback="loading">
+        <ConfigProvider locale={zhCN}>
+            <Provider store={store}>
+                <HashRouter>
+                    <App />
+                </HashRouter>
+            </Provider>
+        </ConfigProvider>
+    </Suspense>
+)
