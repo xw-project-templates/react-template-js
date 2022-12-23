@@ -6,7 +6,8 @@ import { getLogin } from '@/services/modules/home'
 import { setToken } from 'utils/cookie.js'
 import { useNavigate } from 'react-router';
 
-import './index.scss'
+// import './index.scss'
+// import './index.less'
 
 const Login = memo(() => {
 
