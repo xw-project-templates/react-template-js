@@ -6,14 +6,13 @@ import { getLogin } from '@/services/modules/home'
 import { setToken } from 'utils/cookie.js'
 import { useNavigate } from 'react-router';
 
-// import './index.scss'
-// import './index.less'
 
 const Login = memo(() => {
 
     const Navigate = useNavigate()
 
     const onFinish = (values) => {
+        testTs('123')
         const account = {
             username: crypto.encrypt(values.username),
             password: crypto.encrypt(values.password)
@@ -28,6 +27,10 @@ const Login = memo(() => {
     const onFinishFailed = (errorInfo) => {
         console.log('Failed:', errorInfo);
     };
+
+    const testTs = (data) => {
+        console.log(data)
+    }
 
     return (<div className='content'>
         <Form
@@ -65,8 +68,6 @@ const Login = memo(() => {
             >
                 <Input.Password />
             </Form.Item>
-
-
             <Form.Item
             >
                 <Button type="primary" htmlType="submit">

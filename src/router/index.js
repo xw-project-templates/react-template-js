@@ -3,7 +3,7 @@ import { Navigate } from "react-router-dom"
 
 const Home = React.lazy(() => import("pages/Home"))
 const Mine = React.lazy(() => import("pages/Mine"))
-const Login = React.lazy(() => import("pages/Login"))
+const Login = React.lazy(() => import("pages/Login/index.jsx"))
 
 const routes = [
     {

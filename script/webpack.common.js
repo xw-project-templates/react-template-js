@@ -42,7 +42,7 @@ const commonConfig = (isProduction) => {
         "@": resolveApp("./src"),
         pages: resolveApp("./src/pages"),
         config: resolveApp("./src/config"),
-        utils:resolveApp("./src/utils")
+        utils: resolveApp("./src/utils")
       },
     },
     resolveLoader: {
@@ -152,7 +152,7 @@ const commonConfig = (isProduction) => {
           },
         },
         {
-          test: /\(.jsx|.tsx|.ts)$/,
+          test: /\.(js|jsx|ts|tsx)$/,
           exclude: /node_modules/,
           use: {
             loader: "babel-loader",
@@ -161,7 +161,7 @@ const commonConfig = (isProduction) => {
       ],
     },
     plugins: [
-      require("postcss-preset-env"), // 通过js给现代的css添加一些特性,转成大多数浏览器认识的CSS,
+      require("postcss-preset-env"),
       new CleanWebpackPlugin(),
       new HtmlWebpackPlugin({
         title: "cxw测试",
