@@ -25,6 +25,12 @@ testRouter.post('/login', (ctx, next) => {
 // 验证账号接口
 
 
+//  测试axios的封装
+testRouter.post('/test',(ctx,next) =>{
+    ctx.body = "测试请求成功~"
+})
+
+
 app.use(bodyParser())
 app.use(cors())
 app.use(testRouter.routes())
