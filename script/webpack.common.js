@@ -6,6 +6,7 @@ const CopyWebpackPlugin = require("copy-webpack-plugin")//将public中一些其�
 const progressBarWebpackPlugin = require("progress-bar-webpack-plugin"); //进度条显示.
 const webpackMerge = require("webpack-merge");
 const SpeedMeasurePlugin = require("speed-measure-webpack-plugin"); //打包时间分析.
+// const EslintWebpackPlugin = require("eslint-webpack-plugin")
 
 const smp = new SpeedMeasurePlugin();
 
@@ -18,24 +19,10 @@ const commonConfig = (isProduction) => {
       index: "./src/index.js",
     },
     output: {
-      filename: "bundle.js",
+      filename: "static/js/[name]_[[hash:8].js",
       path: resolveApp("./build"),
-      chunkFilename: "[name].[hash:16].chunk.js",
+      clean: true
     },
-    devServer: {
-      hot: true,
-      // proxy: {
-      //   "/Api": {
-      //     target:"http://localhost:9001",
-      //     pathRewrite:{
-      //       "^Api":""
-      //     },
-      //     secure:false,
-      //     changeOrigin:true
-      //   }
-      // },
-    },
-    // 解析到文件时自动添加扩展名.
     resolve: {
       extensions: [".wasm", ".mjs", ".js", ".json", ".jsx", ".ts", ".vue"], //尝试按顺序解析这些后缀名.
       alias: {
@@ -43,29 +30,6 @@ const commonConfig = (isProduction) => {
         pages: resolveApp("./src/pages"),
         config: resolveApp("./src/config"),
         utils: resolveApp("./src/utils")
-      },
-    },
-    resolveLoader: {
-      modules: ["./xw-loader", "node_modules"],
-    },
-    // 优化相关的
-    optimization: {
-      splitChunks: {
-        chunks: "all",
-        minChunks: 1,
-        cacheGroups: {
-          vendor: {
-            //第三方供应商node_modules打包时抽成这个命名
-            test: /[\\/]node_modules[\\/]/,
-            filename: "vendors_[id]_[hash:16].js",
-            priority: -10,
-          },
-          default: {
-            minChunks: 2,
-            filename: "common_[id]_[hash:16].js",
-            priority: -20,
-          },
-        },
       },
     },
     module: {
@@ -116,8 +80,7 @@ const commonConfig = (isProduction) => {
           test: /\.(png|jpe?g|gif|svg)$/, //相当于url-loader
           type: "asset",
           generator: {
-            //自定义文件输出路径和属性
-            filename: "img/[name].[hash:16][ext]",
+            filename: "static/img/[name].[hash:12][ext]",
           },
           parser: {
             // url-loader 的limit 效果
@@ -131,7 +94,7 @@ const commonConfig = (isProduction) => {
           test: /\.ttf|eot|woff2?$/i,
           type: "asset/resource",
           generator: {
-            filename: "font/[name]/[hash:6][ext]",
+            filename: "static/fonts/[name]/[hash:6][ext]",
           },
         },
         // babel-preset 设置预设
@@ -154,9 +117,17 @@ const commonConfig = (isProduction) => {
         {
           test: /\.(js|jsx|ts|tsx)$/,
           exclude: /node_modules/,
-          use: {
-            loader: "babel-loader",
-          },
+          use: [
+            {
+              loader: "babel-loader",
+            },
+            // {// 是否开启多进程打包
+            //   loader: "thread-loader",
+            //   options: {
+            //     workers: 3
+            //   }
+            // }
+          ]
         },
       ],
     },
@@ -182,6 +153,10 @@ const commonConfig = (isProduction) => {
           }
         ]
       }),
+      // new EslintWebpackPlugin({
+      //   extensions: [".js", ".jsx"],
+      //   emitWarning:false
+      // }),
       new progressBarWebpackPlugin(),
     ],
   };

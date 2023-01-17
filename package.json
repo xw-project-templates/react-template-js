@@ -69,6 +69,7 @@
     "purgecss-webpack-plugin": "^5.0.0",
     "react-refresh": "^0.14.0",
     "speed-measure-webpack-plugin": "^1.5.0",
+    "thread-loader": "^3.0.4",
     "webpack": "^5.75.0",
     "webpack-bundle-analyzer": "^4.7.0",
     "webpack-dev-middleware": "^6.0.1",

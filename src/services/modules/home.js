@@ -15,6 +15,13 @@ export function postHome(params) {
         data:params
     })
 }
+// 测试其他接口请求及响应拦截
+export function testOther(params) {
+    return Request.post({
+        url: "/test",
+        data:params
+    })
+}
 
 // Login登录测试
 export function getLogin(params) {

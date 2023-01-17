@@ -16,6 +16,7 @@ class Request {
         this.instance.interceptors.request.use((config) => {
             return config
         })
+        
     }
     request(config) {
         return this.instance.request(config)
@@ -25,6 +26,21 @@ class Request {
     }
     post(config) {
         return this.request({ ...config, method: "post" })
+    }
+    delete(config) {
+        return this.request({ ...config, method: "delete" })
+    }
+    put(config) {
+        return this.request({ ...config, method: "put" })
+    }
+    head(config) {
+        return this.request({ ...config, method: "head" })
+    }
+    options(config) {
+        return this.request({ ...config, method: "options" })
+    }
+    patch(config) {
+        return this.request({ ...config, method: "patch" })
     }
 }
 
