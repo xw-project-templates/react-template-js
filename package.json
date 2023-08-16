@@ -7,7 +7,6 @@
     "test": "",
     "build": "webpack --config ./script/webpack.common.js --env production",
     "dev": "webpack server --config ./script/webpack.common.js --env development",
-    "deploy": "node ./deploy/index.js",
     "type-check": "tsc --noEmit",
     "type-check-watch": "tsc --noEmit --watch"
   },
