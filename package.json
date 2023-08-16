@@ -61,7 +61,6 @@
     "loader-utils": "^3.2.1",
     "marked": "^4.2.4",
     "mini-css-extract-plugin": "^2.7.2",
-    "node-ssh": "^13.1.0",
     "postcss": "^8.4.19",
     "postcss-cli": "^10.0.0",
     "postcss-preset-env": "^7.8.3",
