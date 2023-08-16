@@ -32,7 +32,7 @@ specifiers:
   loader-utils: ^3.2.1
   marked: ^4.2.4
   mini-css-extract-plugin: ^2.7.2
-  node-ssh: ^13.0.0
+  node-ssh: ^13.1.0
   nodemon: ^2.0.20
   normalize.css: ^8.0.1
   postcss: ^8.4.19
@@ -2836,7 +2836,6 @@ packages:
       parse-json: 5.2.0
       path-type: 4.0.0
     dev: false
-
 
   /cross-spawn/7.0.3:
     resolution: {integrity: sha512-iRDPJKUPVEND7dHPO8rkbOnPpyDygcDFtWjpeWNCgy8WP2rXcxXL8TskReQl6OrB2G7+UJrags1q15Fudc7G6w==}
